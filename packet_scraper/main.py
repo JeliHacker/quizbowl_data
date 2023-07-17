@@ -33,7 +33,10 @@ for link in packet_links:
     os.makedirs(packet_dir, exist_ok=True)
 
     if not is_directory_empty(packet_dir):
+        print(f"skipping {link}")
         continue
+
+    print(f"getting documents from {link}...")
 
     # Get the packet page HTML
     packet_url = base_url + "/" + link.get('href')
@@ -46,7 +49,7 @@ for link in packet_links:
     # Loop through the file links
     for file_link in file_links:
         # Check if the file is a .pdf, .docx, or other acceptable format
-        if file_link.get('href').endswith(('.pdf', '.docx', '.txt', '.rtf', '.doc', '.zip')):
+        if file_link.get('href').endswith(('.pdf', '.docx', '.txt', '.rtf', '.doc', '.zip', '.DOC', '.RTF')):
             # Download the file
             file_url = file_link.get('href')
             response = requests.get(file_url)
