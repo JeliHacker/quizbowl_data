@@ -1,7 +1,1 @@
-packet_scraper/highschool/
-*.pdf
-*.doc
-*.docx
-*.rtf
-*.txt
-*.zip
+.DS_Store
